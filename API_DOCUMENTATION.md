@@ -2,7 +2,7 @@
 
 ## Base URL
 ```
-Production: http://YOUR_VPS_IP:3003
+Production: http://howky.onzmedia.com:3003
 Local: http://localhost:3003
 ```
 
@@ -159,7 +159,7 @@ chatId: string (optional)
 
 ### Connection
 ```javascript
-const socket = io('http://YOUR_VPS_IP:3003');
+const socket = io('http://howky.onzmedia.com:3003');
 ```
 
 ### Events to Emit (Client → Server)
@@ -222,7 +222,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class ApiService {
-  static const String baseUrl = 'http://YOUR_VPS_IP:3003';
+  static const String baseUrl = 'http://howky.onzmedia.com:3003';
   
   // Register user
   static Future<Map<String, dynamic>> register(String username, String password) async {
@@ -259,7 +259,7 @@ class ApiService {
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class SocketService {
-  static const String socketUrl = 'http://YOUR_VPS_IP:3003';
+  static const String socketUrl = 'http://howky.onzmedia.com:3003';
   late IO.Socket socket;
   
   void connect() {
@@ -317,24 +317,24 @@ class SocketService {
 ### Test API Endpoints
 ```bash
 # Register
-curl -X POST http://YOUR_VPS_IP:3003/api/users/register \
+curl -X POST http://howky.onzmedia.com:3003/api/users/register \
   -H "Content-Type: application/json" \
   -d '{"username":"testuser","password":"test123"}'
 
 # Send Message  
-curl -X POST http://YOUR_VPS_IP:3003/api/messages \
+curl -X POST http://howky.onzmedia.com:3003/api/messages \
   -H "Content-Type: application/json" \
   -d '{"chatId":"chat123","senderId":"user1","content":"Hello","type":"text"}'
 
 # Get Messages
-curl http://YOUR_VPS_IP:3003/api/messages/chat123
+curl http://howky.onzmedia.com:3003/api/messages/chat123
 ```
 
 ### Test Socket.io
 ```bash
 node -e "
 const io = require('socket.io-client');
-const socket = io('http://YOUR_VPS_IP:3003');
+const socket = io('http://howky.onzmedia.com:3003');
 socket.on('connect', () => {
   console.log('Connected');
   socket.emit('joinChat', 'test');
@@ -360,3 +360,5 @@ socket.on('receiveMessage', console.log);
 - **Status**: `pm2 status`
 
 Replace `YOUR_VPS_IP` with your actual VPS IP address before using in Flutter app.
+
+**Your production API is now available at: http://howky.onzmedia.com:3003**
